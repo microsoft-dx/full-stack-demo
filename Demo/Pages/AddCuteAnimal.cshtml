@@ -1,0 +1,33 @@
+﻿@page
+@model AddCuteAnimalModel
+@{
+    ViewData["Title"] = "Add Cute Animal";
+}
+
+    <section id="photos">
+        @if(Model.ShowError)
+        {
+            <span class="alert-danger">The form is not valid</span>
+        }
+
+        <form action="/AddCuteAnimal" method="post">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label asp-for="Model.type">Animal type</label>
+                <input class="form-control" type="text" asp-for="Model.type" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Model.name">Animal name</label>
+                <input class="form-control" type="text" asp-for="Model.name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Model.photo">Photo link</label>
+                <input class="form-control" type="text" asp-for="Model.photo" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Model.score">Cuteness level</label>
+                <input class="form-control" type="number" asp-for="Model.score" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </section>

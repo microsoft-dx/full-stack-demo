@@ -23,6 +23,18 @@ namespace Demo.Pages
             this.photo = photo;
             this.score = score;
         }
+
+        public CuteAnimal()
+        {
+            // we need this when adding a new cute animal
+        }
+
+        public bool IsValid()
+        {
+            return !string.IsNullOrWhiteSpace(type)
+                && !string.IsNullOrWhiteSpace(name)
+                && !string.IsNullOrWhiteSpace(photo);
+        }
     }
 
     public class IndexModel : PageModel
