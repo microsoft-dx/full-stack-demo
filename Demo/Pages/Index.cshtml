@@ -1,0 +1,54 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+    #photos {
+        /* Prevent vertical gaps */
+        line-height: 0;
+        -webkit-column-count: 5;
+        -webkit-column-gap: 0px;
+        -moz-column-count: 5;
+        -moz-column-gap: 0px;
+        column-count: 5;
+        column-gap: 0px;
+    }
+
+        #photos img {
+            /* Just in case there are inline attributes */
+            width: 100% !important;
+            height: auto !important;
+        }
+
+    div.gallery {
+        margin: 5px;
+        border: 1px solid #ccc;
+    }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+    }
+</style>
+
+<section id="photos">
+    @foreach (var animal in Model.animals)
+    {
+        <div class="gallery">
+            <img src=@Html.DisplayFor(m => animal.photo)>
+            <div class="desc">
+                @Html.DisplayFor(m => animal.name) - @Html.DisplayFor(m => animal.score)/10
+            </div>
+        </div>
+    }
+</section>
